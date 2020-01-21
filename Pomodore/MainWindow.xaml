@@ -1,0 +1,23 @@
+﻿<Window x:Class="Pomodore.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Pomodore" Icon="/Resources/timer.png"
+        Height="180" Width="180" ResizeMode="NoResize" 
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent"
+        WindowState="Normal"
+        Deactivated="Window_Deactivated"
+        >
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.New" Executed="NewCommand_Executed" CanExecute="NewCommand_CanExecute" />
+    </Window.CommandBindings>
+    <Grid>
+        <Image Source="/Pomodore;component/Resources/timer.png" Opacity="{Binding Path=OpacityV}">
+            <Image.InputBindings>
+                <MouseBinding Gesture="LeftClick" Command="ApplicationCommands.New" />
+            </Image.InputBindings>
+        </Image>
+    </Grid>
+</Window>
