@@ -5,15 +5,19 @@ namespace Pomodore
 {
     public class Configuration
     {
-        private int startMinute = 0;
-        private int endMinute = 15;
+        private readonly AppSettings _appSettings;
+        public Configuration()
+        {
+            _appSettings = new AppSettings();
+        }
+
         public TimeRange GetPomodoreTime()
         {
             var currentDate = DateTime.Now.Date.AddHours(DateTime.Now.Hour);
             return new TimeRange
             {
-                StartTime = currentDate.AddMinutes(startMinute),
-                EndTime = currentDate.AddMinutes(endMinute)
+                StartTime = currentDate.AddMinutes(_appSettings.StartMinute),
+                EndTime = currentDate.AddMinutes(_appSettings.EndMinute)
             };
         }
     }
